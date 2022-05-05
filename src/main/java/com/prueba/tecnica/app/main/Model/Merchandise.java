@@ -1,5 +1,6 @@
 package com.prueba.tecnica.app.main.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ public class Merchandise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_merchandise")
-    private long idMerchandise;
+    private Long idMerchandise;
 
     @Column(name = "product_name", unique = true)
     private String productName;
@@ -25,10 +26,11 @@ public class Merchandise {
     @JsonIgnoreProperties(value = {"merchandises"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_employee")
+    @JsonIgnore
     private Employee employee;
 
     // getters
-    public long getIdMerchandise() {
+    public Long getIdMerchandise() {
         return idMerchandise;
     }
 
@@ -36,7 +38,7 @@ public class Merchandise {
         return productName;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
@@ -50,7 +52,7 @@ public class Merchandise {
 
     //setters
 
-    public void setIdMerchandise(long idMerchandise) {
+    public void setIdMerchandise(Long idMerchandise) {
         this.idMerchandise = idMerchandise;
     }
 
@@ -58,7 +60,7 @@ public class Merchandise {
         this.productName = productName;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 

@@ -1,5 +1,6 @@
 package com.prueba.tecnica.app.main.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Employee {
     @JsonIgnoreProperties(value = {"employees"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_job_position")
+    @JsonIgnore
     private JobPosition jobPosition;
 
     @Temporal(TemporalType.TIMESTAMP)
