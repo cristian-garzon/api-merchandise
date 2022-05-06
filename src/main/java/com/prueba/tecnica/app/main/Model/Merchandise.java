@@ -23,10 +23,8 @@ public class Merchandise {
     @Column(name = "enter_date")
     private Date enterDate;
 
-    @JsonIgnoreProperties(value = {"merchandises"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_employee")
-    @JsonIgnore
     private Employee employee;
 
     // getters

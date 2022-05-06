@@ -1,10 +1,5 @@
 package com.prueba.tecnica.app.main.Dto.Request;
 
-import org.springframework.lang.Nullable;
-
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.Date;
 
 
 public class FilterMerchandiseDto {
@@ -13,7 +8,19 @@ public class FilterMerchandiseDto {
     private Long idMerchandise;
 
 
+    private String NameEmployee;
+
+    private String nameMerchandise;
     //getters
+
+
+    public String getNameEmployee() {
+        return NameEmployee;
+    }
+
+    public String getNameMerchandise() {
+        return nameMerchandise;
+    }
 
     public Long getIdEmployee() {
         return idEmployee;
@@ -26,6 +33,14 @@ public class FilterMerchandiseDto {
 
     //setters
 
+
+    public void setNameEmployee(String nameEmployee) {
+        NameEmployee = nameEmployee;
+    }
+
+    public void setNameMerchandise(String nameMerchandise) {
+        this.nameMerchandise = nameMerchandise;
+    }
 
     public void setIdEmployee(Long idEmployee) {
         this.idEmployee = idEmployee;

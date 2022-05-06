@@ -12,7 +12,10 @@ import java.util.List;
 public interface IMerchandiseRepo extends JpaRepository<Merchandise, Long> {
     @Query(value = "select mer from Merchandise mer " +
             "where (:idMerchandise is null or mer.idMerchandise = :idMerchandise) " +
-            "and (:idEmployee is null or mer.employee.idEmployee = :idEmployee)")
+            "and (:idEmployee is null or mer.employee.idEmployee = :idEmployee)" +
+            "and (:nameEmployee is null or mer.employee.name like concat('%', :nameEmployee, '%') )" +
+            "and (:nameMerchandise is null or mer.productName like concat('%', :nameMerchandise, '%') )")
     public List<Merchandise> filterMerchandise(@Nullable @Param("idEmployee") Long idEmployee, @Nullable @Param("idMerchandise")
-                                               Long idMerchandise);
+                                               Long idMerchandise, @Nullable @Param("nameEmployee") String nameEmployee
+                                               , @Nullable @Param("nameMerchandise") String nameMerchandise);
 }

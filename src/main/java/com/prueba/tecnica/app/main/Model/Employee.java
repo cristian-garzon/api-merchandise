@@ -21,17 +21,14 @@ public class Employee {
 
     private int age;
 
-    @JsonIgnoreProperties(value = {"employees"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_job_position")
-    @JsonIgnore
     private JobPosition jobPosition;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "enter_date_company")
     private Date enterDateCompany;
 
-    @JsonIgnoreProperties(value = {"employee"})
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Merchandise> merchandises;
 

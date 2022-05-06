@@ -18,7 +18,6 @@ public class JobPosition {
 
 
 
-    @JsonIgnoreProperties(value = {"jobPosition"})
     @OneToMany(mappedBy = "jobPosition", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Employee> employees;
 
