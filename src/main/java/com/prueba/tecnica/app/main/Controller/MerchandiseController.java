@@ -10,50 +10,74 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
-@RequestMapping("/merchandise")
+@RequestMapping("/api/merchandise")
+@CrossOrigin
 public class MerchandiseController {
 
 
     @Autowired
     private IMerchandiseService merchandiseService;
 
-    @GetMapping("/find/{idMerchandise}")
-    public ResponseEntity<MerchandiseDto> findMerchandiseById(@PathVariable long idMerchandise){
-        MerchandiseDto dtoMerchandise = merchandiseService.findMerchandise(idMerchandise);
-        if(dtoMerchandise == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        return ResponseEntity.ok().body(dtoMerchandise);
+    @GetMapping("/{idMerchandise}")
+    public ResponseEntity<?> findMerchandiseById(@PathVariable long idMerchandise){
+        try {
+            MerchandiseDto dtoMerchandise = merchandiseService.findMerchandise(idMerchandise);
+            if(dtoMerchandise == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.ok().body(dtoMerchandise);
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @GetMapping()
-    public ResponseEntity<List<MerchandiseDto>> listMerchandise(){
-        return ResponseEntity.ok().body(merchandiseService.listMerchandise());
+    public ResponseEntity<?> listMerchandise(){
+        try{
+            return ResponseEntity.ok().body(merchandiseService.listMerchandise());
+        } catch (Exception e ){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PostMapping()
-    public ResponseEntity<MerchandiseDto> addMerchandise(@RequestBody AddMerchandiseDto dtoAddMerchandise){
-        MerchandiseDto dtoMerchandise = merchandiseService.addMerchandise(dtoAddMerchandise);
-        if(dtoMerchandise == null) ResponseEntity.status(HttpStatus.BAD_REQUEST).body("un error ha ocurrido");
-        return ResponseEntity.ok().body(dtoMerchandise);
+    public ResponseEntity<?> addMerchandise(@RequestBody AddMerchandiseDto dtoAddMerchandise){
+        try {
+            MerchandiseDto dtoMerchandise = merchandiseService.addMerchandise(dtoAddMerchandise);
+            if(dtoMerchandise == null) ResponseEntity.status(HttpStatus.BAD_REQUEST).body("un error ha ocurrido");
+            return ResponseEntity.ok().body(dtoMerchandise);
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
-    @DeleteMapping("/delete/{idMerchandise}")
+    @DeleteMapping("/{idMerchandise}")
     public ResponseEntity<?> deleteMerchandise(@PathVariable long idMerchandise){
-        merchandiseService.deleteMerchandise(idMerchandise);
-        return ResponseEntity.noContent().build();
+        try{
+            merchandiseService.deleteMerchandise(idMerchandise);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
     @PutMapping()
-    public ResponseEntity<MerchandiseDto>
+    public ResponseEntity<?>
         editMerchandise(@RequestBody EditMerchandiseDto dtoEditMerchandise){
-        MerchandiseDto dtoMerchandise = merchandiseService.editMerchandise(dtoEditMerchandise);
-        if(dtoMerchandise == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        return ResponseEntity.ok().body(dtoMerchandise);
+        try{
+            MerchandiseDto dtoMerchandise = merchandiseService.editMerchandise(dtoEditMerchandise);
+            if(dtoMerchandise == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.ok().body(dtoMerchandise);
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PostMapping("/filter")
-    public ResponseEntity<List<MerchandiseDto>> filterMerchandise(@RequestBody FilterMerchandiseDto dtoFilterMerchandise){
-        return ResponseEntity.ok().body(merchandiseService.filterMerchandise(dtoFilterMerchandise));
+    public ResponseEntity<?> filterMerchandise(@RequestBody FilterMerchandiseDto dtoFilterMerchandise){
+        try {
+            return ResponseEntity.ok().body(merchandiseService.filterMerchandise(dtoFilterMerchandise));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 }
