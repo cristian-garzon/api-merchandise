@@ -1,6 +1,6 @@
 # api-merchandise
 
-por favor, en el motor de base de datos de postbres, correr la siguiente linea
+por favor, en el motor de base de datos de postgres, correr la siguiente linea
 ```sql
 create database merchandise
 ```
