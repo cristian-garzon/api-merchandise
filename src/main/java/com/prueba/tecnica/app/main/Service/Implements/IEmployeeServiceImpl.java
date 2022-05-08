@@ -23,7 +23,7 @@ public class IEmployeeServiceImpl implements IEmployeeService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<EmployeeDto> ListEmployeeDto(){
+    public List<EmployeeDto> listEmployeeDto(){
         return employeeRepo.findAll().stream().map(employee -> modelMapper.map(employee, EmployeeDto.class)).
                 collect(Collectors.toList());
     }

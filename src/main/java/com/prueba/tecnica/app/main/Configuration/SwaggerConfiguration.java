@@ -29,8 +29,8 @@ public class SwaggerConfiguration {
                 "Merchandise API",
                 "Api of Merchandise",
                 "1.0",
-                "http://codmind.com/terms",
-                new Contact("cristian garzon", "https://codmind.com", "cristiancamilogarzon2@gmail.com"),
+                "",
+                new Contact("cristian garzon", "https://github.com/cristian-garzon", "cristiancamilogarzon2@gmail.com"),
                 "LICENSE",
                 "LICENSE URL",
                 Collections.emptyList()
