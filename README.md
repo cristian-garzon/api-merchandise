@@ -4,22 +4,14 @@ por favor, en el motor de base de datos de postgres, correr la siguiente linea
 ```sql
 create database merchandise
 ```
+lo siguiente es dirigirnos al application.properties y colocar el respectivo usuario y contraseña de nuestro motor de base de datos
 
-ahora vamos a ir al application.properties y vamos a colocar nuestro usuario y nuestra contraseña, acto seguido corremos el programa.
+![image text](https://github.com/cristian-garzon/evidencias/blob/main/WhatsApp%20Image%202022-05-07%20at%208.08.58%20PM.jpeg)
 
-ahora vamos a ejecutar los siguientes inserts para tener los cargos posibles, y los empleados
-
-```sql
--- insert job positions
-insert into job_position (name) values ('Asesor de Ventas');
-insert into job_position (name) values ('administrador');
-insert into job_position (name) values ('soporte');
+lo siguiente que haremos es ejecurar los test unitarios, donde podremos ver que se creó los test de cada metodo que se va a hacer uso, al ejecutarlo nos dá el siguiente resultado
 
 
--- insert employees
-insert into employee (age, enter_date_company, name, id_job_position) values (19, now(), 'cristian', 2);
-insert into employee (age, enter_date_company, name, id_job_position) values (19, now(), 'camilo', 1);
-```
+![image text](https://github.com/cristian-garzon/evidencias/blob/main/WhatsApp%20Image%202022-05-07%20at%208.05.10%20PM.jpeg)
 
 para usar la api sin necesidad de usar la aplicación, podemos ir a la documentación del swagger que estará en 
 http://localhost:8080/swagger-ui.html
